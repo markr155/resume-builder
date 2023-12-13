@@ -1,0 +1,60 @@
+:root {
+  --primary-colour: ;
+  --accent-colour: ;
+  --ff: ;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: #ddd;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.input-container {
+  border-right: 1px solid black;
+  box-shadow: 1px 0 1px black;
+}
+
+.preview-container {
+
+}
+
+#resume-preview {
+  position: relative;
+  margin: 0 4rem;
+  top: 10%;
+  aspect-ratio: 1/1.41;
+  height: 80vh;
+  background: #fff;
+}
+
+.information {
+  padding: 1rem;
+  border-top: 1px solid black;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+
+}
+
+.info-form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.info-form > input, textarea {
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  resize: none;
+}
+
+
