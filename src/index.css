@@ -1,14 +1,18 @@
 :root {
-  --primary-colour: ;
-  --accent-colour: ;
-  --ff: ;
+  --primary-colour: #ddd;
+  --secondary-colour: #B6E1E7;
+  --accent-colour: teal;
+  --preview-bg: #fff;
+  --border-colour: #000;
+  --ff: "Roboto", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: #ddd;
+  background: var(--primary-colour);
+  font-family: var(--ff);
 }
 
 #root {
@@ -18,12 +22,8 @@ body {
 }
 
 .input-container {
-  border-right: 1px solid black;
-  box-shadow: 1px 0 1px black;
-}
-
-.preview-container {
-
+  border-right: 1px solid var(--border-colour);
+  box-shadow: 1px 0 1px var(--border-colour);
 }
 
 #resume-preview {
@@ -32,15 +32,14 @@ body {
   top: 10%;
   aspect-ratio: 1/1.41;
   height: 80vh;
-  background: #fff;
+  background: var(--preview-bg);
 }
 
 .information {
-  padding: 1rem;
-  border-top: 1px solid black;
+  border-top: 1px solid var(--border-colour);
   margin-top: 0.5rem;
   margin-right: 0.5rem;
-
+  padding: 0 0.5rem;
 }
 
 .info-form {
@@ -57,4 +56,26 @@ textarea {
   resize: none;
 }
 
+.form-header {
+  text-align: center;
+}
 
+.options-button {
+  color: var(--primary-colour);
+  border: 1px solid rgba(0, 0, 0, 0);
+  font-weight: 600;
+  border-radius: 0.3rem;
+  margin: 0.3rem 0.3rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--accent-colour);
+  box-shadow: 1px 1px 3px black;
+  transition: box-shadow 0.1s ease;
+}
+
+.options-button:hover {
+  transform: scale(1.05);
+}
+
+.options-button:active {
+  box-shadow: 0px 0px 3px 2px black;
+}

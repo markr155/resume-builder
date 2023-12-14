@@ -60,7 +60,6 @@ function App() {
 
     <div className="preview-container">
       <div id="resume-preview">
-
       </div>
     </div>
 
