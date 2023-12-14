@@ -35,11 +35,16 @@ body {
   background: var(--preview-bg);
 }
 
+.options-container {
+  text-align: center;
+}
+
 .information {
   border-top: 1px solid var(--border-colour);
   margin-top: 0.5rem;
   margin-right: 0.5rem;
   padding: 0 0.5rem;
+  text-align: center;
 }
 
 .info-form {
@@ -50,6 +55,8 @@ body {
 
 .info-form > input, textarea {
   margin-bottom: 0.5rem;
+  border: 1px solid var(--border-colour);
+  border-radius: 0.2rem;
 }
 
 textarea {
