@@ -14,6 +14,10 @@ export default function InputContainer({
     newEducation,
     handleEducationInput,
     handleAddEducation,
+    experienceList,
+    newExperience,
+    handleExperienceInput,
+    handleAddExperience
 }) {
     return (    
     <div className="input-container">
@@ -35,6 +39,10 @@ export default function InputContainer({
         />
 
         <ExperienceInfo 
+        experienceList={experienceList}
+        newExperience={newExperience}
+        handleExperienceInput={handleExperienceInput}
+        handleAddExperience={handleAddExperience}
         />
     </div>
 )

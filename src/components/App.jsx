@@ -42,6 +42,40 @@ function App() {
     });
   }
 
+  const [experienceList, setExperienceList] = useState([]);
+  const [newExperience, setNewExperience] = useState({
+    name: '',
+    title: '',
+    responsibilities: '',
+    dateFrom: '',
+    dateTo: ''
+  });
+
+  const handleExperienceInput = (e) => {
+    const { name, value } = e.target;
+    setNewExperience((currentExperience) => ({
+      ...currentExperience,
+      [name]: value,
+    }));
+  }
+
+  const handleAddExperience = () => {
+    setExperienceList((currentList) => ([...currentList, newExperience]));
+    setNewExperience({
+      name: '',
+      title: '',
+      responsibilities: '',
+      dateFrom: '',
+      dateTo: ''
+    });
+  }
+
+  const handleDeleteEducationItem = (key) => {
+    const newEducationList = educationList.filter((education) => education.key !== key);
+    setEducationList(newEducationList);
+  }
+  
+
   return (
     <>
     <InputContainer 
@@ -51,16 +85,23 @@ function App() {
     onEmailChange={handleEmailChange}
     phoneNumber={phoneNumber}
     onPhoneNumberChange={handlePhoneNumberChange}
+
     educationList={educationList}
     newEducation={newEducation}
     handleEducationInput={handleEducationInput}
     handleAddEducation={handleAddEducation}
+
+    experienceList={experienceList}
+    newExperience={newExperience}
+    handleExperienceInput={handleExperienceInput}
+    handleAddExperience={handleAddExperience}
     />
     <PreviewContainer
     name={name}
     email={email}
     phoneNumber={phoneNumber}
     educationList={educationList}
+    experienceList={experienceList}
     />
     </>
   )
