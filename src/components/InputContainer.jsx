@@ -9,7 +9,11 @@ export default function InputContainer({
     email,
     onEmailChange,
     phoneNumber,
-    onPhoneNumberChange
+    onPhoneNumberChange,
+    educationList,
+    newEducation,
+    handleEducationInput,
+    handleAddEducation,
 }) {
     return (    
     <div className="input-container">
@@ -23,8 +27,15 @@ export default function InputContainer({
         onPhoneNumberChange={onPhoneNumberChange}
         />
 
-        <EducationInfo />
-        <ExperienceInfo />
+        <EducationInfo 
+        educationList={educationList}
+        newEducation={newEducation}
+        handleEducationInput={handleEducationInput}
+        handleAddEducation={handleAddEducation}
+        />
+
+        <ExperienceInfo 
+        />
     </div>
 )
 }
