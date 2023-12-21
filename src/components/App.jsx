@@ -20,6 +20,7 @@ function App() {
 
   const [educationList, setEducationList] = useState([]);
   const [newEducation, setNewEducation] = useState({
+    key: '',
     school: '',
     title: '',
     date: ''
@@ -34,8 +35,10 @@ function App() {
   }
 
   const handleAddEducation = () => {
-    setEducationList((currentList) => ([...currentList, newEducation]));
+    const educationKey = `${newEducation.school}-${newEducation.title}-${newEducation.date}`
+    setEducationList((currentList) => ([...currentList, {...newEducation, key: educationKey}]));
     setNewEducation({
+      key: '',
       school: '',
       title: '',
       date: ''
@@ -44,6 +47,7 @@ function App() {
 
   const [experienceList, setExperienceList] = useState([]);
   const [newExperience, setNewExperience] = useState({
+    key: '',
     name: '',
     title: '',
     responsibilities: '',
@@ -60,8 +64,10 @@ function App() {
   }
 
   const handleAddExperience = () => {
-    setExperienceList((currentList) => ([...currentList, newExperience]));
+    const experienceKey = `${newExperience.name}-${newExperience.title}`
+    setExperienceList((currentList) => ([...currentList, {...newExperience, key: experienceKey}]));
     setNewExperience({
+      key: '',
       name: '',
       title: '',
       responsibilities: '',
@@ -73,6 +79,11 @@ function App() {
   const handleDeleteEducationItem = (key) => {
     const newEducationList = educationList.filter((education) => education.key !== key);
     setEducationList(newEducationList);
+  }
+
+  const handleDeleteExperienceItem = (key) => {
+    const newExperienceList = experienceList.filter((experience) => experience.key !== key);
+    setExperienceList(newExperienceList);
   }
   
 
@@ -102,6 +113,8 @@ function App() {
     phoneNumber={phoneNumber}
     educationList={educationList}
     experienceList={experienceList}
+    handleDeleteEducationItem={handleDeleteEducationItem}
+    handleDeleteExperienceItem={handleDeleteExperienceItem}
     />
     </>
   )
