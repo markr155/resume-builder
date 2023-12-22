@@ -1,7 +1,7 @@
 import DeleteInfoButton from "./DeleteInfoButton";
-import EditInfoButton from "./EditInfoButton";
-import EducationListItem from "./EducationListItem";
-import ExperienceListItem from "./ExperienceListItem";
+import EditInfoButton from "./EditInfoButton.jsx";
+import EducationListItem from "./EducationListItem.jsx";
+import ExperienceListItem from "./ExperienceListItem.jsx";
 
 export default function PreviewContainer({
   name,
@@ -11,6 +11,8 @@ export default function PreviewContainer({
   experienceList,
   handleDeleteEducationItem,
   handleDeleteExperienceItem,
+  handleEditEducationItem,
+  handleEditExperienceItem,
 }) {
   return (
     <div className="preview-container">
@@ -35,16 +37,15 @@ export default function PreviewContainer({
                     date={education.date}
                   />
                   <div className="list-button-container">
-                  <EditInfoButton
+                    <EditInfoButton
                       editKey={education.key}
-                       />
+                      editItem={handleEditEducationItem}
+                    />
                     <DeleteInfoButton
-                        deleteKey={education.key}
-                        deleteItem={handleDeleteEducationItem}
-                      />
-                      
+                      deleteKey={education.key}
+                      deleteItem={handleDeleteEducationItem}
+                    />
                   </div>
-                
                 </li>
               ))}
           </ul>
@@ -62,14 +63,14 @@ export default function PreviewContainer({
                     dateFrom={experience.dateFrom}
                     dateTo={experience.dateTo}
                   />
-                  <EditInfoButton 
-                  editKey={experience.key}
+                  <EditInfoButton
+                    editKey={experience.key}
+                    editItem={handleEditExperienceItem}
                   />
                   <DeleteInfoButton
                     deleteItem={handleDeleteExperienceItem}
                     deleteKey={experience.key}
                   />
-                  
                 </li>
               ))}
           </ul>

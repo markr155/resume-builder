@@ -14,13 +14,13 @@ function App() {
       key: "University of Australia-Bachelor of Computer Science-22-12-2022",
       school: "University of Australia",
       title: "Bachelor of Computer Science",
-      date: "22-12-2022",
+      date: "2022-12-22",
     },
     {
       key: "University of Australia-Masters of Computer Science-22-12-2023",
       school: "University of Australia",
       title: "Masters of Computer Science",
-      date: "22-12-2023",
+      date: "2023-12-22",
     },
   ];
 
@@ -31,8 +31,8 @@ function App() {
       title: "Executive in charge of Fermentation Refreshment Distribution",
       responsibilities:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, ducimus repudiandae quos dolor consequatur dignissimos soluta tempora consequuntur ex corporis voluptas ut eos suscipit sit?",
-      dateFrom: "01-01-2018",
-      dateTo: "11-10-2021",
+      dateFrom: "2018-01-01",
+      dateTo: "2021-11-10",
     },
     {
       key: "Tiny Repair Store-Backstore Goblin",
@@ -40,8 +40,8 @@ function App() {
       title: "Backstore Goblin",
       responsibilities:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore excepturi laudantium eaque repellat inventore. Nihil labore laborum perferendis minima dolore minus officiis magni fuga impedit nobis nostrum alias explicabo, commodi tenetur nesciunt dolorum libero id aut nemo sed incidunt voluptatibus.",
-      dateFrom: "20-04-2016",
-      dateTo: "06-09-2018",
+      dateFrom: "2016-20-04",
+      dateTo: "2018-06-09",
     },
   ];
 
@@ -90,6 +90,21 @@ function App() {
     });
   };
 
+  const handleDeleteEducationItem = (key) => {
+    const newEducationList = educationList.filter(
+      (education) => education.key !== key,
+    );
+    setEducationList(newEducationList);
+  };
+
+  const handleEditEducationItem = (key) => {
+    const selectedItem = educationList.find(
+      (education) => education.key === key,
+    );
+    setNewEducation(selectedItem);
+    handleDeleteEducationItem(key);
+  };
+
   const [experienceList, setExperienceList] = useState(testExperienceList);
   const [newExperience, setNewExperience] = useState({
     key: "",
@@ -124,18 +139,19 @@ function App() {
     });
   };
 
-  const handleDeleteEducationItem = (key) => {
-    const newEducationList = educationList.filter(
-      (education) => education.key !== key,
-    );
-    setEducationList(newEducationList);
-  };
-
   const handleDeleteExperienceItem = (key) => {
     const newExperienceList = experienceList.filter(
       (experience) => experience.key !== key,
     );
     setExperienceList(newExperienceList);
+  };
+
+  const handleEditExperienceItem = (key) => {
+    const selectedItem = experienceList.find(
+      (experience) => experience.key === key,
+    );
+    setNewExperience(selectedItem);
+    handleDeleteExperienceItem(key);
   };
 
   return (
@@ -164,6 +180,8 @@ function App() {
         experienceList={experienceList}
         handleDeleteEducationItem={handleDeleteEducationItem}
         handleDeleteExperienceItem={handleDeleteExperienceItem}
+        handleEditEducationItem={handleEditEducationItem}
+        handleEditExperienceItem={handleEditExperienceItem}
       />
     </>
   );
