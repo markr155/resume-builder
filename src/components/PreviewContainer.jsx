@@ -1,75 +1,80 @@
 import DeleteInfoButton from "./DeleteInfoButton";
+import EditInfoButton from "./EditInfoButton";
 import EducationListItem from "./EducationListItem";
 import ExperienceListItem from "./ExperienceListItem";
 
-
 export default function PreviewContainer({
-    name,
-    email,
-    phoneNumber,
-    educationList,
-    experienceList,
-    handleDeleteEducationItem,
-    handleDeleteExperienceItem
-    }) {
-    return (
-        <div className="preview-container">
-            <div id="resume-preview">
-                <header>
-                    <h4 className="resume-heading">General Information</h4>
-                    <p>Name: {name}</p>
-                    <p>Email: {email}</p>
-                    <p>Phone Number: {phoneNumber}</p>
-                </header>
-                <div className="education-section">
-                    <h4 className="resume-heading">Education</h4>
-                    <ul className="education-list">
-                        <li>Harvard - Bachelor of Computer Science - 15/05/2020</li>
-                        {educationList && educationList.map((education) => (
-                            <li 
-                            className='list-item' 
-                            key={education.key}
-                            >
-                                <EducationListItem
-                                school={education.school}
-                                title={education.title}
-                                date={education.date}
-                                />
-                                <DeleteInfoButton
-                                deleteKey={education.key}
-                                deleteItem={handleDeleteEducationItem}
-                                />
-                            </li>
-                        ))}
-                    </ul>            
-                </div>
-                <div className="experience-section">
-                    <h4 className="resume-heading">Experience</h4>
-                    <ul className="experience-list">
-                        {experienceList && experienceList.map((experience) => (
-                            <li 
-                            key={experience.key}
-                            className="list-item"
-                            >
-                                <ExperienceListItem 
-                                name={experience.name}
-                                title={experience.title}
-                                responsibilities={experience.responsibilities}
-                                dateFrom={experience.dateFrom}
-                                dateTo={experience.dateTo}
-                                />
-                                <DeleteInfoButton 
-                                deleteItem={handleDeleteExperienceItem}
-                                deleteKey={experience.key}
-                                />    
-                            </li>
-
-                        ))}
-                    </ul>
-                </div>
-            </div>
-
+  name,
+  email,
+  phoneNumber,
+  educationList,
+  experienceList,
+  handleDeleteEducationItem,
+  handleDeleteExperienceItem,
+}) {
+  return (
+    <div className="preview-container">
+      <div id="resume-preview">
+        <header className="general-info-section">
+          <h4 className="resume-heading">General Information</h4>
+          <div className="general-info-container">
+            <p>{name}</p>
+            <p>{email}</p>
+            <p>{phoneNumber}</p>
+          </div>
+        </header>
+        <div className="education-section">
+          <h3 className="resume-heading">Education</h3>
+          <ul className="education-list">
+            {educationList &&
+              educationList.map((education) => (
+                <li className="list-item" key={education.key}>
+                  <EducationListItem
+                    school={education.school}
+                    title={education.title}
+                    date={education.date}
+                  />
+                  <div className="list-button-container">
+                  <EditInfoButton
+                      editKey={education.key}
+                       />
+                    <DeleteInfoButton
+                        deleteKey={education.key}
+                        deleteItem={handleDeleteEducationItem}
+                      />
+                      
+                  </div>
+                
+                </li>
+              ))}
+          </ul>
         </div>
-        
-    )
+        <div className="experience-section">
+          <h3 className="resume-heading">Experience</h3>
+          <ul className="experience-list">
+            {experienceList &&
+              experienceList.map((experience) => (
+                <li key={experience.key} className="list-item">
+                  <ExperienceListItem
+                    name={experience.name}
+                    title={experience.title}
+                    responsibilities={experience.responsibilities}
+                    dateFrom={experience.dateFrom}
+                    dateTo={experience.dateTo}
+                  />
+                  <EditInfoButton 
+                  editKey={experience.key}
+                  />
+                  <DeleteInfoButton
+                    deleteItem={handleDeleteExperienceItem}
+                    deleteKey={experience.key}
+                  />
+                  
+                </li>
+              ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
 }
